@@ -1,0 +1,1801 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta
+      name="description"
+      content="Yester Selga — Full Stack Developer building web applications, e-commerce platforms, ERP integrations, and mobile apps."
+    />
+    <title>Yester Selga — Full Stack Developer</title>
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: #11182b;
+        --panel2: #151e34;
+        --text: #f4f7ff;
+        --muted: #a7b2c9;
+        --line: rgba(255, 255, 255, 0.11);
+        --accent: #82f0c8;
+        --accent2: #8fa7ff;
+        --max: 1120px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(
+            ellipse at 85% 0%,
+            rgba(84, 104, 205, 0.16),
+            transparent 38%
+          ),
+          var(--bg);
+        color: var(--text);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.65;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        width: min(var(--max), calc(100% - 40px));
+        margin: auto;
+      }
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(11, 16, 32, 0.82);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-inner {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        font-size: 1.08rem;
+      }
+      .brand span {
+        color: var(--accent);
+      }
+      .links {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .links a:hover,
+      .links a:focus {
+        color: var(--accent);
+      }
+      .menu {
+        display: none;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 8px 11px;
+        font-size: 1.1rem;
+      }
+      .hero {
+        padding: 100px 0 82px;
+        display: grid;
+        grid-template-columns: 1.35fr 0.65fr;
+        align-items: center;
+        gap: 60px;
+        min-height: 610px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid rgba(130, 240, 200, 0.25);
+        background: rgba(130, 240, 200, 0.07);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 7px 13px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 15px var(--accent);
+      }
+      h1 {
+        font-size: clamp(3rem, 7vw, 5.6rem);
+        line-height: 0.99;
+        letter-spacing: -0.075em;
+        margin: 24px 0 20px;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .hero p {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin: 0 0 30px;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-weight: 750;
+        font-size: 0.93rem;
+        border: 1px solid var(--line);
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .primary {
+        background: var(--accent);
+        color: #09131a;
+        border-color: var(--accent);
+      }
+      .secondary {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .hero-card {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 26px;
+        background: linear-gradient(
+          145deg,
+          rgba(143, 167, 255, 0.13),
+          rgba(130, 240, 200, 0.05)
+        );
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.22);
+        overflow: hidden;
+      }
+      .hero-card:before {
+        content: "";
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        border-radius: 50%;
+        background: rgba(130, 240, 200, 0.12);
+        filter: blur(45px);
+        right: -70px;
+        top: -80px;
+      }
+      .monogram {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: clamp(76px, 12vw, 112px);
+        aspect-ratio: 1 / 1;
+        flex: 0 0 auto;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 25%;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: #0b1020;
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -0.08em;
+        margin-bottom: 28px;
+      }
+      .monogram img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      @media (max-width: 620px) {
+        .monogram {
+          width: clamp(72px, 22vw, 96px);
+          margin-bottom: 22px;
+          border-radius: 22%;
+        }
+      }
+      .hero-card h2 {
+        font-size: 1.2rem;
+        margin: 0 0 5px;
+        position: relative;
+      }
+      .hero-card .muted {
+        color: var(--muted);
+        font-size: 0.9rem;
+        position: relative;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 24px;
+        position: relative;
+      }
+      .stat {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+        background: rgba(8, 12, 25, 0.32);
+      }
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        letter-spacing: -0.04em;
+      }
+      .stat small {
+        color: var(--muted);
+        font-size: 0.77rem;
+      }
+      section {
+        padding: 78px 0;
+      }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 30px;
+      }
+      .kicker {
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .section-head h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.06em;
+        margin: 8px 0 0;
+      }
+      .section-head p {
+        color: var(--muted);
+        max-width: 430px;
+        margin: 0;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .panel {
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.018)
+        );
+        border-radius: 20px;
+        padding: 26px;
+      }
+      .panel p {
+        color: var(--muted);
+        margin-top: 0;
+      }
+      .principles {
+        display: grid;
+        gap: 14px;
+      }
+      .principle {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .icon {
+        flex: 0 0 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: rgba(130, 240, 200, 0.1);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+      .principle strong {
+        display: block;
+      }
+      .principle span {
+        color: var(--muted);
+        font-size: 0.91rem;
+      }
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .skill-group {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+      .skill-group h3 {
+        font-size: 1rem;
+        margin: 0 0 15px;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        font-size: 0.8rem;
+        color: #dbe4f8;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.035);
+        padding: 6px 9px;
+        border-radius: 8px;
+      }
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+      .project {
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 25px;
+        background: linear-gradient(
+          155deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.015)
+        );
+        display: flex;
+        flex-direction: column;
+        min-height: 260px;
+        transition:
+          transform 0.22s,
+          border-color 0.22s;
+      }
+      .project:hover {
+        transform: translateY(-4px);
+        border-color: rgba(130, 240, 200, 0.4);
+      }
+      .project-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .project-num {
+        font-size: 0.78rem;
+        color: var(--accent);
+        font-weight: 800;
+        letter-spacing: 0.1em;
+      }
+      .project-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 13px;
+        display: grid;
+        place-items: center;
+        background: rgba(143, 167, 255, 0.12);
+        color: var(--accent2);
+        font-size: 1.2rem;
+      }
+      .project h3 {
+        font-size: 1.35rem;
+        letter-spacing: -0.035em;
+        margin: 20px 0 8px;
+      }
+      .project p {
+        color: var(--muted);
+        margin: 0 0 20px;
+      }
+      .project .tags {
+        margin-top: auto;
+      }
+      .timeline {
+        display: grid;
+        gap: 0;
+        max-width: 900px;
+      }
+      .job {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 28px;
+        padding: 24px 0;
+        border-top: 1px solid var(--line);
+      }
+      .job:first-child {
+        border-top: 0;
+      }
+      .date {
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 750;
+      }
+      .job h3 {
+        margin: 0;
+        font-size: 1.12rem;
+      }
+      .company {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin: 3px 0 10px;
+      }
+      .job ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      .job li {
+        margin: 5px 0;
+      }
+      .education {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+      }
+      .education h3 {
+        margin: 0 0 4px;
+      }
+      .education p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .year {
+        color: var(--accent);
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .contact-box {
+        border: 1px solid rgba(130, 240, 200, 0.25);
+        border-radius: 28px;
+        padding: clamp(28px, 6vw, 58px);
+        background:
+          radial-gradient(
+            ellipse at 100% 0%,
+            rgba(143, 167, 255, 0.16),
+            transparent 50%
+          ),
+          linear-gradient(
+            135deg,
+            rgba(130, 240, 200, 0.08),
+            rgba(255, 255, 255, 0.02)
+          );
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: center;
+      }
+      .contact-box h2 {
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        line-height: 1.04;
+        letter-spacing: -0.07em;
+        margin: 10px 0 16px;
+      }
+      .contact-box p {
+        color: var(--muted);
+        max-width: 540px;
+      }
+      .contact-links {
+        display: grid;
+        gap: 12px;
+      }
+      .contact-link {
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        padding: 13px 15px;
+        background: rgba(5, 9, 20, 0.25);
+        overflow-wrap: anywhere;
+      }
+      .contact-link small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      .contact-link strong {
+        font-size: 0.93rem;
+      }
+      footer {
+        padding: 28px 0 36px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+      }
+      @media (max-width: 850px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 35px;
+          padding-top: 75px;
+          min-height: 0;
+        }
+        .hero-card {
+          max-width: 480px;
+        }
+        .skills {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .contact-box {
+          grid-template-columns: 1fr;
+        }
+        .section-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .section-head p {
+          max-width: 620px;
+        }
+      }
+      @media (max-width: 620px) {
+        .wrap {
+          width: min(var(--max), calc(100% - 28px));
+        }
+        .nav-inner {
+          height: 66px;
+        }
+        .menu {
+          display: block;
+        }
+        .links {
+          display: none;
+          position: absolute;
+          top: 65px;
+          left: 0;
+          right: 0;
+          padding: 18px 22px 22px;
+          background: #0e1528;
+          border-bottom: 1px solid var(--line);
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+        .links.open {
+          display: flex;
+        }
+        .hero {
+          padding: 62px 0 48px;
+        }
+        h1 {
+          font-size: clamp(3rem, 15vw, 4.7rem);
+        }
+        section {
+          padding: 58px 0;
+        }
+        .about-grid,
+        .projects {
+          grid-template-columns: 1fr;
+        }
+        .skills {
+          grid-template-columns: 1fr 1fr;
+        }
+        .job {
+          grid-template-columns: 1fr;
+          gap: 7px;
+          padding: 20px 0;
+        }
+        .education {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .foot {
+          flex-direction: column;
+        }
+        .hero-card {
+          padding: 22px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          transition: none !important;
+        }
+      }
+
+      .project-preview {
+        position: relative;
+        margin: 0 0 22px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 15px;
+        overflow: hidden;
+        background: #0a1020;
+        aspect-ratio: 16/8.8;
+        isolation: isolate;
+      }
+      .preview-slide {
+        position: absolute;
+        inset: 0;
+        display: none;
+        padding: 13px;
+        background: linear-gradient(135deg, #17223b, #0c1324);
+        overflow: hidden;
+      }
+      .preview-slide.active {
+        display: block;
+        animation: slideIn 0.25s ease;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0.45;
+          transform: scale(0.99);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .preview-browser {
+        height: 100%;
+        border-radius: 8px;
+        background: #f4f6fb;
+        color: #172039;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      .preview-chrome {
+        height: 18px;
+        background: #e2e7f0;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 0 8px;
+      }
+      .preview-chrome i {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #a8b1c2;
+      }
+      .preview-content {
+        padding: 10px 12px;
+        height: calc(100% - 18px);
+        overflow: hidden;
+      }
+      .preview-label {
+        font-size: clamp(7px, 0.8vw, 10px);
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+      .preview-heading {
+        font-size: clamp(10px, 1.35vw, 17px);
+        font-weight: 850;
+        line-height: 1.15;
+        margin: 5px 0 8px;
+        letter-spacing: -0.04em;
+      }
+      .preview-line {
+        height: 5px;
+        border-radius: 8px;
+        background: #d9e0ec;
+        margin: 5px 0;
+        width: 74%;
+      }
+      .preview-line.short {
+        width: 42%;
+      }
+      .preview-line.mid {
+        width: 58%;
+      }
+      .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-top: 9px;
+      }
+      .preview-tile {
+        height: 34px;
+        border-radius: 5px;
+        background: #dfe7f4;
+        padding: 6px;
+      }
+      .preview-tile b {
+        display: block;
+        height: 5px;
+        width: 65%;
+        border-radius: 4px;
+        background: #8797b5;
+        margin-bottom: 5px;
+      }
+      .preview-tile span {
+        display: block;
+        height: 4px;
+        width: 85%;
+        border-radius: 4px;
+        background: #b6c3d8;
+      }
+      .preview-layout {
+        display: grid;
+        grid-template-columns: 27% 1fr;
+        gap: 8px;
+        height: 100%;
+      }
+      .preview-sidebar {
+        background: #192541;
+        border-radius: 5px;
+        padding: 8px;
+      }
+      .preview-sidebar i {
+        display: block;
+        height: 4px;
+        border-radius: 5px;
+        background: #71809d;
+        margin: 8px 0;
+      }
+      .preview-main {
+        min-width: 0;
+      }
+      .preview-bars {
+        display: flex;
+        align-items: end;
+        gap: 5px;
+        height: 47px;
+        margin-top: 8px;
+        padding: 5px;
+        background: #e4eaf4;
+        border-radius: 5px;
+      }
+      .preview-bars i {
+        flex: 1;
+        border-radius: 3px 3px 0 0;
+        background: #6c84d8;
+      }
+      .preview-bars i:nth-child(1) {
+        height: 35%;
+      }
+      .preview-bars i:nth-child(2) {
+        height: 75%;
+      }
+      .preview-bars i:nth-child(3) {
+        height: 52%;
+      }
+      .preview-bars i:nth-child(4) {
+        height: 92%;
+      }
+      .preview-bars i:nth-child(5) {
+        height: 63%;
+      }
+      .preview-accent {
+        color: #0c9274;
+      }
+      .preview-dark {
+        background: #101a2c;
+        color: #f4f7ff;
+      }
+      .preview-dark .preview-label {
+        color: #8fa7ff;
+      }
+      .preview-dark .preview-line {
+        background: #2b3851;
+      }
+      .preview-dark .preview-tile {
+        background: #202d45;
+      }
+      .preview-dark .preview-tile b {
+        background: #82f0c8;
+      }
+      .preview-dark .preview-tile span {
+        background: #50617d;
+      }
+      .preview-photo {
+        height: 36px;
+        border-radius: 5px;
+        background: linear-gradient(120deg, #82f0c8, #8fa7ff);
+        margin-bottom: 7px;
+      }
+      .preview-controls {
+        position: absolute;
+        z-index: 2;
+        left: 22px;
+        right: 22px;
+        bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        pointer-events: none;
+      }
+      .preview-controls button {
+        pointer-events: auto;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(7, 12, 24, 0.78);
+        color: white;
+        border-radius: 8px;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        font-size: 16px;
+        backdrop-filter: blur(6px);
+      }
+      .preview-dots {
+        display: flex;
+        gap: 5px;
+        pointer-events: auto;
+      }
+      .preview-dots button {
+        width: 6px;
+        height: 6px;
+        border: 0;
+        padding: 0;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.45);
+        cursor: pointer;
+      }
+      .preview-dots button.active {
+        width: 18px;
+        background: #82f0c8;
+      }
+      .project-actions {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin-top: 17px;
+      }
+      .project-actions .btn {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        border-radius: 9px;
+      }
+      .project-actions .preview-link[hidden] {
+        display: none;
+      }
+      @media (max-width: 620px) {
+        .project-preview {
+          aspect-ratio: 16/9;
+        }
+        .preview-slide {
+          padding: 9px;
+        }
+        .preview-controls {
+          left: 16px;
+          right: 16px;
+          bottom: 16px;
+        }
+      }
+
+      /* Project cover cards and full-screen slideshow */
+      .project {
+        min-width: 0;
+      }
+      .project-cover {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        padding: 0;
+        margin: 20px 0 2px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 15px;
+        overflow: hidden;
+        background: #101a2c;
+        cursor: zoom-in;
+        position: relative;
+        text-align: left;
+      }
+      .project-cover img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+      }
+      .project-cover:hover img {
+        transform: scale(1.035);
+      }
+      .project-cover::after {
+        content: "View project gallery ↗";
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 6px 9px;
+        background: rgba(7, 12, 24, 0.82);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        backdrop-filter: blur(8px);
+      }
+      .project h3 a {
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .project h3 a:hover,
+      .project h3 a:focus {
+        color: var(--accent);
+        border-color: currentColor;
+      }
+      .project h3 a .external-mark {
+        font-size: 0.75em;
+        color: var(--accent);
+        white-space: nowrap;
+      }
+      .gallery-modal[hidden] {
+        display: none;
+      }
+      .gallery-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(3, 7, 17, 0.9);
+        backdrop-filter: blur(12px);
+      }
+      .gallery-dialog {
+        width: min(1100px, 100%);
+        max-height: calc(100vh - 48px);
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 20px;
+        background: #0d1425;
+        overflow: hidden;
+        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.55);
+      }
+      .gallery-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 15px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      .gallery-heading {
+        min-width: 0;
+      }
+      .gallery-heading strong {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .gallery-heading small {
+        color: var(--muted);
+      }
+      .gallery-close {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.35rem;
+      }
+      .gallery-stage {
+        position: relative;
+        min-height: 220px;
+        height: min(65vh, 680px);
+        display: grid;
+        place-items: center;
+        background: #070c17;
+      }
+      .gallery-stage img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .gallery-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        background: rgba(7, 12, 24, 0.8);
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .gallery-nav.prev {
+        left: 16px;
+      }
+      .gallery-nav.next {
+        right: 16px;
+      }
+      .gallery-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding: 13px 18px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .gallery-dots {
+        display: flex;
+        gap: 7px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .gallery-dots button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #66728a;
+        cursor: pointer;
+      }
+      .gallery-dots button.active {
+        width: 23px;
+        border-radius: 8px;
+        background: var(--accent);
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+      @media (max-width: 620px) {
+        .project-cover {
+          margin-top: 16px;
+        }
+        .gallery-modal {
+          padding: 10px;
+        }
+        .gallery-dialog {
+          max-height: calc(100vh - 20px);
+          border-radius: 14px;
+        }
+        .gallery-stage {
+          height: 55vh;
+          min-height: 180px;
+        }
+        .gallery-nav {
+          width: 36px;
+          height: 36px;
+        }
+        .gallery-nav.prev {
+          left: 8px;
+        }
+        .gallery-nav.next {
+          right: 8px;
+        }
+        .gallery-footer {
+          padding: 11px 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#home" aria-label="Yester Selga home"
+          >YS<span>.</span></a
+        >
+        <button
+          class="menu"
+          id="menuButton"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav class="links" id="navLinks" aria-label="Main navigation">
+          <a href="#">About</a><a href="#skills">Skills</a
+          ><a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="wrap hero" id="home">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span> Full Stack Developer · 10+ years
+          </div>
+          <h1>Building digital<br />products that <em>work.</em></h1>
+          <p>
+            I’m Yester Selga, a full stack developer creating responsive web and
+            mobile applications, e-commerce experiences, custom business
+            systems, and integrations that help teams get more done.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#projects"
+              >Explore my work <span aria-hidden="true">↗</span></a
+            >
+            <a class="btn secondary" href="mailto:yesterselga@gmail.com"
+              >Let’s talk <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Professional summary">
+          <div class="monogram">
+            <img
+              src="images/yester.png"
+              alt="Yester Selga profile photo"
+              loading="lazy"
+            />
+          </div>
+          <h2>Yester Selga</h2>
+          <div class="muted">Full Stack Developer · Philippines</div>
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>10+</strong><small>Years in development</small>
+            </div>
+            <div class="stat">
+              <strong>Web</strong><small>Mobile & business systems</small>
+            </div>
+            <div class="stat">
+              <strong>ERP</strong><small>Integrations & reporting</small>
+            </div>
+            <div class="stat">
+              <strong>Full</strong><small>Stack delivery</small>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="skills">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="kicker">Toolkit</div>
+              <h2>Skills & technologies.</h2>
+            </div>
+            <p>
+              A broad toolkit for building and maintaining modern digital
+              products.
+            </p>
+          </div>
+          <div class="skills">
+            <div class="skill-group">
+              <h3>Web & Front End</h3>
+              <div class="tags">
+                <span class="tag">HTML</span><span class="tag">CSS</span
+                ><span class="tag">JavaScript</span
+                ><span class="tag">TypeScript</span
+                ><span class="tag">Angular</span><span class="tag">Vue</span
+                ><span class="tag">React</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h3>Backend & APIs</h3>
+              <div class="tags">
+                <span class="tag">PHP</span><span class="tag">Laravel</span
+                ><span class="tag">FilamentPHP</span
+                ><span class="tag">CodeIgniter</span
+                ><span class="tag">Node.js</span
+                ><span class="tag">C# / .NET</span
+                ><span class="tag">REST APIs</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h3>Mobile & Data</h3>
+              <div class="tags">
+                <span class="tag">Flutter</span><span class="tag">Dart</span
+                ><span class="tag">Java</span><span class="tag">Android</span
+                ><span class="tag">MySQL</span><span class="tag">MariaDB</span
+                ><span class="tag">MSSQL</span><span class="tag">Firebase</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h3>Platforms & Business</h3>
+              <div class="tags">
+                <span class="tag">WordPress</span
+                ><span class="tag">Elementor</span
+                ><span class="tag">WooCommerce</span
+                ><span class="tag">SAP Business One</span
+                ><span class="tag">Acumatica</span
+                ><span class="tag">ERPNext</span
+                ><span class="tag">DigitalOcean</span
+                ><span class="tag">AWS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="kicker">Selected work</div>
+              <h2>Projects & solutions.</h2>
+            </div>
+            <p>
+              Highlights drawn from my professional experience. Some work was
+              delivered within teams or for client organizations.
+            </p>
+          </div>
+          <div class="projects">
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">ERP & INTEGRATION</span>
+                <div class="project-mark">↔</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="erp"
+                aria-label="Open image gallery for Custom ERP Web Application"
+              >
+                <img
+                  data-cover="erp"
+                  alt="Custom ERP Web Application project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="erp">Custom ERP Web Application</h3>
+              <p>
+                Developed a C# and Angular ERP web application and integrated
+                SAP Business One through its Service Layer to improve data
+                access, reporting, and operational workflows.
+              </p>
+              <div class="tags">
+                <span class="tag">C#</span><span class="tag">Angular</span
+                ><span class="tag">SAP Business One API</span>
+              </div>
+            </article>
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">ENTERPRISE PORTAL</span>
+                <div class="project-mark">▤</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="portal"
+                aria-label="Open image gallery for IQPortal 2.0"
+              >
+                <img
+                  data-cover="portal"
+                  alt="IQPortal 2.0 project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="portal">IQPortal 2.0</h3>
+              <p>
+                Contributed to enterprise solutions focused on improving client
+                interactions and product management as part of a web and SAP
+                development role.
+              </p>
+              <div class="tags">
+                <span class="tag">Enterprise Software</span
+                ><span class="tag">Web Development</span
+                ><span class="tag">Integration</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">WEB APP</span>
+                <div class="project-mark">▦</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="arkitext"
+                aria-label="Open image gallery for Arkitext"
+              >
+                <img
+                  data-cover="arkitext"
+                  alt="DCP project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="arkitext">Arkitext</h3>
+              <p>
+                Designed and developed a custom web platform for Architects and
+                Contractors.
+              </p>
+              <div class="tags">
+                <span class="tag">Laravel</span
+                ><span class="tag">FilamentPHP</span><span class="tag">PHP</span
+                ><span class="tag">Google API</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">WEBSITE</span>
+                <div class="project-mark">▦</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="dcp"
+                aria-label="Open image gallery for DCP"
+              >
+                <img
+                  data-cover="dcp"
+                  alt="DCP project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="billing">
+                DTI - Design Center of the Philippines
+              </h3>
+              <p>
+                Designed and developed a custom billing application to support
+                more efficient financial operations, alongside ERP reporting and
+                HRIS enhancements.
+              </p>
+              <div class="tags">
+                <span class="tag">WordPress</span
+                ><span class="tag">Elementor</span><span class="tag">PHP</span
+                ><span class="tag">Reporting</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">WEBSITE</span>
+                <div class="project-mark">▦</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="palawan"
+                aria-label="Open image gallery for The Legend Palawan"
+              >
+                <img
+                  data-cover="palawan"
+                  alt="The Legend Palawan project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="palawan">The Legend Palawan</h3>
+              <p>
+                Constructed websites using WordPress and Divi Page Builder,
+                focusing on custom themes and plugins tailored to client needs.
+              </p>
+              <div class="tags">
+                <span class="tag">WordPress</span><span class="tag">Divi</span
+                ><span class="tag">PHP</span><span class="tag">Reporting</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">E-COMMERCE</span>
+                <div class="project-mark">◇</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="commerce"
+                aria-label="Open image gallery for E-Commerce Stores"
+              >
+                <img
+                  data-cover="commerce"
+                  alt="E-Commerce Stores project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="commerce">OKz E-Commerce Store</h3>
+              <p>
+                Built and customized e-commerce websites, WordPress themes,
+                plugins, and responsive pages to support client requirements and
+                online customer journeys.
+              </p>
+              <div class="tags">
+                <span class="tag">WordPress</span
+                ><span class="tag">WooCommerce</span
+                ><span class="tag">PHP</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">E-COMMERCE</span>
+                <div class="project-mark">◇</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="yohunts"
+                aria-label="Open image gallery for YoHunts E-Commerce Store"
+              >
+                <img
+                  data-cover="yohunts"
+                  alt="YoHunts E-Commerce Store project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="commerce">YoHunts E-Commerce Store</h3>
+              <p>
+                Built and customized e-commerce websites, WordPress themes,
+                plugins, and responsive pages to support client requirements and
+                online customer journeys.
+              </p>
+              <div class="tags">
+                <span class="tag">WordPress</span
+                ><span class="tag">WooCommerce</span
+                ><span class="tag">PHP</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <span class="project-num">MOBILE APPS</span>
+                <div class="project-mark">▣</div>
+              </div>
+              <button
+                class="project-cover"
+                type="button"
+                data-gallery="mobile"
+                aria-label="Open image gallery for Mobile Apps"
+              >
+                <img
+                  data-cover="mobile"
+                  alt="Mobile Apps project cover preview"
+                  loading="lazy"
+                />
+              </button>
+              <h3 data-project-title="mobile">TrackOn Student Tracking</h3>
+              <p>
+                Developed Android applications using Java and Flutter, plus
+                desktop and internal systems such as payroll and tracking tools
+                to streamline operations.
+              </p>
+              <div class="tags">
+                <span class="tag">Flutter</span><span class="tag">Java</span
+                ><span class="tag">Desktop Apps</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="wrap">
+          <div class="contact-box">
+            <div>
+              <div class="kicker">Have a project in mind?</div>
+              <h2>Let’s build something useful.</h2>
+              <p>
+                Looking for a developer who can work across web, mobile,
+                e-commerce, and business systems? Let’s discuss your goals and
+                how I can help.
+              </p>
+              <a class="btn primary" href="mailto:yesterselga@gmail.com"
+                >Email me <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="contact-links">
+              <a
+                class="contact-link"
+                href="https://yesterselga.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><small>Website</small><strong>yesterselga.com ↗</strong></a
+              >
+              <a class="contact-link" href="mailto:yesterselga@gmail.com"
+                ><small>Email</small><strong>yesterselga@gmail.com ↗</strong></a
+              >
+              <a class="contact-link" href="tel:+639155911611"
+                ><small>Phone</small><strong>+63 915 591 1611</strong></a
+              >
+              <div class="contact-link">
+                <small>Based in</small><strong>Bulacan, Philippines</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap foot">
+        <span>© <span id="year"></span> Yester Selga. Built with care.</span
+        ><a href="#home">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <div class="gallery-modal" id="projectGallery" hidden aria-hidden="true">
+      <div
+        class="gallery-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="galleryTitle"
+      >
+        <div class="gallery-header">
+          <div class="gallery-heading">
+            <strong id="galleryTitle">Project preview</strong
+            ><small id="gallerySubtitle">Project gallery</small>
+          </div>
+          <button
+            class="gallery-close"
+            type="button"
+            aria-label="Close gallery"
+          >
+            ×
+          </button>
+        </div>
+        <div class="gallery-stage">
+          <img id="galleryImage" alt="Project screenshot preview" />
+          <button
+            class="gallery-nav prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            class="gallery-nav next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+        </div>
+        <div class="gallery-footer">
+          <span id="galleryCount">1 / 3</span>
+          <div
+            class="gallery-dots"
+            id="galleryDots"
+            aria-label="Choose image"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      menuButton.addEventListener("click", () => {
+        const open = navLinks.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.textContent = open ? "✕" : "☰";
+      });
+      navLinks.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.textContent = "☰";
+        }),
+      );
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Add real project URLs and screenshot paths in PROJECTS below when available.
+      // Images can be local files (e.g. images/erp-dashboard.png) or absolute URLs.
+      // Since no project URLs/screenshots were supplied, tasteful mock previews are used as fallbacks.
+      const PROJECTS = {
+        erp: { title: "Custom ERP Web Application", url: "", images: [] },
+        portal: {
+          title: "IQPortal 2.0",
+          url: "",
+          images: [
+            "images/portal/01.png",
+            "images/portal/02.png",
+            "images/portal/03.png",
+            "images/portal/04.png",
+            "images/portal/05.png",
+            "images/portal/06.png",
+          ],
+        },
+
+        arkitext: {
+          title: "Arkitext",
+          url: "",
+          images: ["images/arkitext/01.png", "images/arkitext/02.png"],
+        },
+
+        dcp: {
+          title: "DTI - Design Center of the Philippines",
+          url: "",
+          images: [
+            "images/dcp/dcp-01.png",
+            "images/dcp/dcp-02.png",
+            "images/dcp/dcp-03.png",
+          ],
+        },
+
+        palawan: {
+          title: "The Legend Palawan",
+          url: "",
+          images: ["images/palawan/01.png"],
+        },
+
+        commerce: {
+          title: "E-Commerce Stores",
+          url: "",
+          images: ["images/okz/01.png"],
+        },
+
+        yohunts: {
+          title: "YoHunts E-Commerce Stores",
+          url: "",
+          images: ["images/yohunts/01.png"],
+        },
+        mobile: {
+          title: "Mobile Apps",
+          url: "",
+          images: [
+            "images/trackon/01.png",
+            "images/trackon/02.png",
+            "images/trackon/03.png",
+            "images/trackon/04.png",
+            "images/trackon/05.png",
+            "images/trackon/06.png",
+          ],
+        },
+      };
+
+      const escapeXml = (value) =>
+        String(value).replace(
+          /[<>&\"]/g,
+          (ch) =>
+            ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" })[ch],
+        );
+      function mockPreview(title, kind, index) {
+        const palettes = {
+          erp: ["#14233d", "#82f0c8", "#7189e8"],
+          portal: ["#18233b", "#8fa7ff", "#7ce0c2"],
+          billing: ["#1a2440", "#82f0c8", "#f2c879"],
+          data: ["#132d31", "#7ee0c4", "#8fa7ff"],
+          commerce: ["#2a1c37", "#f4a7c7", "#8fa7ff"],
+          mobile: ["#17213a", "#8fa7ff", "#82f0c8"],
+        };
+        const [bg, accent, accent2] = palettes[kind] || palettes.erp;
+        const heading =
+          index === 0
+            ? title
+            : index === 1
+              ? "Overview & workspace"
+              : "Reports & details";
+        const cards = index === 1 ? 4 : 3;
+        const cardMarkup = Array.from({ length: cards }, (_, i) => {
+          const x = 72 + i * 165;
+          const heights = [72, 112, 88, 96];
+          return `<rect x="${x}" y="190" width="142" height="${heights[(i + index) % heights.length]}" rx="9" fill="#fff" opacity=".08"/><rect x="${x + 14}" y="207" width="${55 + ((i * 7) % 38)}" height="7" rx="3" fill="${i % 2 ? accent2 : accent}"/><rect x="${x + 14}" y="224" width="94" height="5" rx="2" fill="#dbe5f6" opacity=".45"/><rect x="${x + 14}" y="238" width="70" height="5" rx="2" fill="#dbe5f6" opacity=".25"/>`;
+        }).join("");
+        const chart =
+          kind === "data" || kind === "billing" || index === 2
+            ? `<rect x="72" y="126" width="500" height="48" rx="8" fill="#fff" opacity=".07"/><path d="M95 158 L155 145 L215 152 L275 133 L335 144 L395 127 L455 137 L535 119" fill="none" stroke="${accent}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`
+            : `<rect x="72" y="126" width="500" height="48" rx="8" fill="#fff" opacity=".07"/><rect x="91" y="141" width="165" height="8" rx="4" fill="${accent}"/><rect x="91" y="155" width="275" height="5" rx="3" fill="#dbe5f6" opacity=".3"/>`;
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${bg}"/><stop offset="1" stop-color="#0a1020"/></linearGradient></defs><rect width="760" height="430" fill="url(#g)"/><circle cx="680" cy="30" r="180" fill="${accent}" opacity=".08"/><rect x="24" y="24" width="712" height="382" rx="16" fill="#0b1222" stroke="#fff" stroke-opacity=".15"/><rect x="24" y="24" width="712" height="35" rx="16" fill="#fff" opacity=".07"/><circle cx="43" cy="41" r="4" fill="#f28b82"/><circle cx="57" cy="41" r="4" fill="#fbbc04"/><circle cx="71" cy="41" r="4" fill="#81c995"/><rect x="43" y="76" width="15" height="280" rx="6" fill="${accent2}" opacity=".28"/><rect x="72" y="78" width="120" height="8" rx="4" fill="${accent}"/><text x="72" y="111" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#f4f7ff">${escapeXml(heading)}</text>${chart}${cardMarkup}<text x="72" y="379" font-family="Arial,sans-serif" font-size="11" letter-spacing="2" fill="#dbe5f6" opacity=".5">PROJECT PREVIEW · ${index + 1}</text></svg>`;
+        return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+      }
+
+      Object.entries(PROJECTS).forEach(([key, project]) => {
+        const article = document
+          .querySelector(`[data-gallery="${key}"]`)
+          ?.closest(".project");
+        const title = article?.querySelector("h3");
+        const cover = article?.querySelector(`[data-cover="${key}"]`);
+        const validUrl = /^https?:\/\//i.test(project.url || "");
+        if (title && validUrl) {
+          const anchor = document.createElement("a");
+          anchor.href = project.url;
+          anchor.target = "_blank";
+          anchor.rel = "noopener noreferrer";
+          anchor.innerHTML = `${title.textContent} <span class="external-mark" aria-hidden="true">↗</span>`;
+          title.replaceChildren(anchor);
+        }
+        const images = project.images.length
+          ? project.images
+          : [0, 1, 2].map((n) => mockPreview(project.title, key, n));
+        if (cover) cover.src = images[0];
+        project._images = images;
+      });
+
+      const modal = document.getElementById("projectGallery");
+      const galleryImage = document.getElementById("galleryImage");
+      const galleryTitle = document.getElementById("galleryTitle");
+      const gallerySubtitle = document.getElementById("gallerySubtitle");
+      const galleryCount = document.getElementById("galleryCount");
+      const galleryDots = document.getElementById("galleryDots");
+      let activeProject = null;
+      let activeIndex = 0;
+      let lastFocused = null;
+      function renderGallery() {
+        const images = activeProject._images;
+        galleryImage.src = images[activeIndex];
+        galleryImage.alt = `${activeProject.title} preview ${activeIndex + 1}`;
+        galleryTitle.textContent = activeProject.title;
+        gallerySubtitle.textContent = activeProject.url
+          ? "Project screenshots · Select title to visit website"
+          : "Project screenshots · Add image URLs in PROJECTS to use real screenshots";
+        galleryCount.textContent = `${activeIndex + 1} / ${images.length}`;
+        galleryDots.replaceChildren();
+        images.forEach((_, i) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.classList.toggle("active", i === activeIndex);
+          dot.setAttribute("aria-label", `Show image ${i + 1}`);
+          dot.addEventListener("click", () => {
+            activeIndex = i;
+            renderGallery();
+          });
+          galleryDots.append(dot);
+        });
+      }
+      function openGallery(key) {
+        activeProject = PROJECTS[key];
+        if (!activeProject) return;
+        activeIndex = 0;
+        lastFocused = document.activeElement;
+        renderGallery();
+        modal.hidden = false;
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        modal.querySelector(".gallery-close").focus();
+      }
+      function closeGallery() {
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        if (lastFocused) lastFocused.focus();
+      }
+      function moveGallery(delta) {
+        if (!activeProject) return;
+        activeIndex =
+          (activeIndex + delta + activeProject._images.length) %
+          activeProject._images.length;
+        renderGallery();
+      }
+      document
+        .querySelectorAll(".project-cover")
+        .forEach((button) =>
+          button.addEventListener("click", () =>
+            openGallery(button.dataset.gallery),
+          ),
+        );
+      modal
+        .querySelector(".gallery-close")
+        .addEventListener("click", closeGallery);
+      modal
+        .querySelector(".prev")
+        .addEventListener("click", () => moveGallery(-1));
+      modal
+        .querySelector(".next")
+        .addEventListener("click", () => moveGallery(1));
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeGallery();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (modal.hidden) return;
+        if (event.key === "Escape") closeGallery();
+        if (event.key === "ArrowLeft") moveGallery(-1);
+        if (event.key === "ArrowRight") moveGallery(1);
+      });
+    </script>
+  </body>
+</html>
